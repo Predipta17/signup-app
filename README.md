@@ -1,3 +1,4 @@
+
 # Sign-Up App
 
 A full-stack sign-up page built with **React**, **Node.js/Express**, and **MongoDB Atlas**.
@@ -110,3 +111,7 @@ Health check endpoint. Returns `{ "status": "ok" }`.
 | Database   | MongoDB Atlas (M0)  |
 | Validation | express-validator   |
 | Hashing    | bcryptjs            |
+=======
+# signup-app
+Full-stack user registration system built with React, Node.js, Express, and MongoDB Atlas featuring form validation, password hashing, and secure user authentication.
+>>>>>>> 62277a8fb05f7f9bd31910355f68747dd193775b
