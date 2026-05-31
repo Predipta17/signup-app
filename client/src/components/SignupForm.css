@@ -1,0 +1,471 @@
+/* ==========================================
+   SIGNUP CARD — Glassmorphism Container
+   ========================================== */
+
+.signup-card {
+  position: relative;
+  border-radius: 24px;
+  animation: cardEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animated gradient border */
+.signup-card__glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
+  background: var(--gradient-primary);
+  background-size: 200% 200%;
+  animation: glowRotate 6s linear infinite;
+  opacity: 0.6;
+  z-index: 0;
+  transition: opacity var(--transition-base);
+}
+
+.signup-card:hover .signup-card__glow {
+  opacity: 0.85;
+}
+
+@keyframes glowRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.signup-card__inner {
+  position: relative;
+  z-index: 1;
+  background: rgba(15, 15, 35, 0.92);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-card);
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.signup-card__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.signup-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  margin-bottom: 1rem;
+  color: var(--color-accent);
+}
+
+.signup-card__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.signup-card__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: var(--gradient-primary);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: glowRotate 6s linear infinite;
+}
+
+.signup-card__subtitle {
+  margin-top: 0.5rem;
+  font-size: 0.925rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+/* ==========================================
+   ALERT MESSAGES
+   ========================================== */
+
+.signup-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  animation: alertSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes alertSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signup-alert--success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #34d399;
+}
+
+.signup-alert--error {
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  color: #fb7185;
+}
+
+.signup-alert__icon {
+  flex-shrink: 0;
+  display: flex;
+}
+
+.signup-alert__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ==========================================
+   FORM
+   ========================================== */
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ==========================================
+   FORM GROUP
+   ========================================== */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.form-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+  transition: color var(--transition-fast);
+}
+
+.form-group--error .form-label {
+  color: var(--color-error);
+}
+
+.form-group--valid .form-label {
+  color: var(--color-success);
+}
+
+/* ==========================================
+   INPUT WRAPPER
+   ========================================== */
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  display: flex;
+  color: var(--color-text-dim);
+  pointer-events: none;
+  transition: color var(--transition-fast);
+  z-index: 1;
+}
+
+.input-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.form-group--error .input-icon {
+  color: var(--color-error);
+}
+
+.form-group--valid .input-icon {
+  color: var(--color-success);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8125rem 0.875rem 0.8125rem 2.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: 0.9375rem;
+  outline: none;
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.form-input::placeholder {
+  color: var(--color-text-dim);
+  opacity: 0.6;
+}
+
+.form-input:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.form-input:focus {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+}
+
+.form-group--error .form-input {
+  border-color: rgba(244, 63, 94, 0.5);
+}
+
+.form-group--error .form-input:focus {
+  box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.12);
+}
+
+.form-group--valid .form-input {
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.form-group--valid .form-input:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+}
+
+.form-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   PASSWORD TOGGLE
+   ========================================== */
+
+.input-toggle {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-dim);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.input-toggle:hover {
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.input-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ==========================================
+   PASSWORD STRENGTH METER
+   ========================================== */
+
+.password-strength {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 0.375rem;
+  animation: alertSlide 0.25s ease;
+}
+
+.password-strength__bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.password-strength__fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width var(--transition-base), background var(--transition-base);
+}
+
+.password-strength__fill--weak {
+  background: var(--color-error);
+}
+.password-strength__fill--fair {
+  background: var(--color-warning);
+}
+.password-strength__fill--strong {
+  background: #22c55e;
+}
+.password-strength__fill--excellent {
+  background: var(--color-success);
+}
+
+.password-strength__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 60px;
+  text-align: right;
+}
+
+.password-strength__label--weak {
+  color: var(--color-error);
+}
+.password-strength__label--fair {
+  color: var(--color-warning);
+}
+.password-strength__label--strong {
+  color: #22c55e;
+}
+.password-strength__label--excellent {
+  color: var(--color-success);
+}
+
+/* ==========================================
+   ERROR MESSAGE
+   ========================================== */
+
+.form-error {
+  font-size: 0.75rem;
+  color: var(--color-error);
+  font-weight: 500;
+  padding-left: 2px;
+  animation: alertSlide 0.25s ease;
+}
+
+/* ==========================================
+   SUBMIT BUTTON
+   ========================================== */
+
+.signup-btn {
+  position: relative;
+  width: 100%;
+  padding: 0.9375rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 14px;
+  background: var(--gradient-primary);
+  background-size: 200% 200%;
+  color: #fff;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-base), opacity var(--transition-fast);
+  animation: glowRotate 6s linear infinite;
+}
+
+.signup-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.35), 0 4px 12px rgba(6, 182, 212, 0.2);
+}
+
+.signup-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.signup-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.signup-btn__loader {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* Spinner */
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+.signup-card__footer {
+  text-align: center;
+  margin-top: 1.75rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.signup-link {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.signup-link:hover {
+  color: #a78bfa;
+  text-decoration: underline;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 520px) {
+  .signup-card__inner {
+    padding: 2rem 1.25rem;
+  }
+
+  .signup-card__title {
+    font-size: 1.5rem;
+  }
+}
